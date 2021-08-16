@@ -1,0 +1,66 @@
+﻿@page
+@model Voogle.Pages.Models.Videos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].UploadDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].AvgRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Video) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvgRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.VideoID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.VideoID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.VideoID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
