@@ -1,0 +1,54 @@
+﻿@page
+@model Voogle.Pages.Models.Requests.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Upvotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].CategoryID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Request) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Upvotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RequestID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RequestID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RequestID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

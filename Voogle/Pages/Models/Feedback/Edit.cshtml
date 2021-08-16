@@ -1,0 +1,45 @@
+﻿@page
+@model Voogle.Pages.Models.Feedback.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Feedback</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Feedback.FeedbackID" />
+            <div class="form-group">
+                <label asp-for="Feedback.Description" class="control-label"></label>
+                <input asp-for="Feedback.Description" class="form-control" />
+                <span asp-validation-for="Feedback.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Feedback.Rating" class="control-label"></label>
+                <input asp-for="Feedback.Rating" class="form-control" />
+                <span asp-validation-for="Feedback.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Feedback.VideoID" class="control-label"></label>
+                <input asp-for="Feedback.VideoID" class="form-control" />
+                <span asp-validation-for="Feedback.VideoID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
