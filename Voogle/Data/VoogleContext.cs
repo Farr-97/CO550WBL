@@ -18,14 +18,24 @@ namespace Voogle.Data
         {
         }
 
-        public DbSet<Voogle.Pages.Models.Videos.Video> Video { get; set; }
+        public DbSet<Video> Video { get; set; }
 
-        public DbSet<Voogle.Pages.Models.Categories.Category> Category { get; set; }
+        public DbSet<Category> Category { get; set; }
 
-        public DbSet<Voogle.Pages.Models.Requests.Request> Request { get; set; }
+        public DbSet<Request> Request { get; set; }
 
-        public DbSet<Voogle.Pages.Models.Feedback.Feedback> Feedback { get; set; }
+        public DbSet<Feedback> Feedback { get; set; }
 
-        public DbSet<Voogle.Pages.Models.Comments.Comment> Comment { get; set; }
+        public DbSet<Comment> Comment { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Video>().ToTable("Video");
+            modelBuilder.Entity<Category>().ToTable("Category");
+            modelBuilder.Entity<Request>().ToTable("Request");
+            modelBuilder.Entity<Feedback>().ToTable("Feedback");
+            modelBuilder.Entity<Comment>().ToTable("Comment");
+        }
+
     }
 }

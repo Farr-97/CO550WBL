@@ -7,20 +7,36 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
+
     <style>
-        .headbar1 {
+        html{
+            position: relative;
+            min-height: 100%;
+        }
+        header {
             background-color: #ee2831;
             text-align:center;
-            font-weight:bold
+            font-weight:bold;
+        }
+        footer {
+            background-color: #ee2831;
+            text-align: center;
+            font-weight: bold;
+            position: absolute;
+            left:0;
+            bottom:0;
+            height: 50px;
+            width:100%;
+            overflow: hidden;
         }
         a.siteTitle {
             font-family:'Palatino Linotype', Georgia;
             font-size: 45px;
-            color:white
+            color:white;
         }
         .sitePages {
             text-align: center;
-            color: white
+            color: white;
         }
         .sitePages > li {
             display: inline-block;
@@ -29,16 +45,16 @@
             text-decoration: none;
             margin: 10px;
             padding: 0px 5px 0px 5px;
-            border-radius: 5px
+            border-radius: 5px;
         }
         .sitePages > li a {
-            color: white
+            color: white;
         }
     </style>
 </head>
 <body>
     <header>
-        <nav class="headbar1">
+        <nav>
             <div>
                 <a class="siteTitle" asp-area="" asp-page="/Index">Voogle</a>
                 <br />
@@ -73,8 +89,8 @@
         </main>
     </div>
 
-    <footer class="footer text-muted">
-        <div class="container">
+    <footer>
+        <div>
             &copy; 2021 - Voogle - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>

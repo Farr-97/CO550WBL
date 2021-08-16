@@ -24,7 +24,7 @@ namespace Voogle.Pages.Models.Requests
         }
 
         [BindProperty]
-        public Request Request { get; set; }
+        public new Request Request { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()

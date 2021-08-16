@@ -18,7 +18,7 @@ namespace Voogle.Pages.Models.Requests
             _context = context;
         }
 
-        public IList<Request> Request { get;set; }
+        public new IList<Request> Request { get;set; }
 
         public async Task OnGetAsync()
         {

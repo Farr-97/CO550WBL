@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Voogle.Pages.Models.Categories;
+using Voogle.Pages.Models.Requests;
 
 namespace Voogle.Pages.Models.Videos
 {
@@ -15,7 +16,7 @@ namespace Voogle.Pages.Models.Videos
         public int AvgRating { get; set; }
         public DateTime Duration { get; set; }
         public string Description { get; set; }
-        //public Request Request { get; set; }
+        public Request Request { get; set; }
         public Category Category { get; set; }
     }
 }

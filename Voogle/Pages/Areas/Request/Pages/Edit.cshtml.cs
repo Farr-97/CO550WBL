@@ -20,7 +20,7 @@ namespace Voogle.Pages.Models.Requests
         }
 
         [BindProperty]
-        public Request Request { get; set; }
+        public new Request Request { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

@@ -1,0 +1,47 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+header {
+    background-color: #ee2831;
+    text-align: center;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #ee2831;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+
+a.siteTitle {
+    font-family: 'Palatino Linotype', Georgia;
+    font-size: 45px;
+    color: white;
+}
+
+.sitePages {
+    text-align: center;
+    color: white;
+}
+
+.sitePages > li {
+    display: inline-block;
+    float: none;
+    color: inherit;
+    text-decoration: none;
+    margin: 10px;
+    padding: 0px 5px 0px 5px;
+    border-radius: 5px;
+}
+
+.sitePages > li a {
+    color: white;
+}
