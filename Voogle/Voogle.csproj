@@ -4,4 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Models\Categories\" />
+    <Folder Include="Pages\Models\Feedback\" />
+    <Folder Include="Pages\Models\Comments\" />
+    <Folder Include="Pages\Models\Requests\" />
+    <Folder Include="Pages\Models\Videos\" />
+  </ItemGroup>
+
 </Project>
