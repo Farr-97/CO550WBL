@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Voogle.Pages.Models.Videos;
+using Voogle.Pages.Videos.Custom;
 
 namespace Voogle.Pages.Models.Categories
 {

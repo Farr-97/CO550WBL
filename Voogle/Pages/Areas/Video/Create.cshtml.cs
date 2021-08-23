@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Voogle.Data;
+using Voogle.Pages.Videos.Custom;
 
-namespace Voogle.Pages.Models.Videos
+namespace Voogle.Pages.Videos.Crud
 {
     public class CreateModel : PageModel
     {
@@ -34,7 +35,7 @@ namespace Voogle.Pages.Models.Videos
                 return Page();
             }
 
-            _context.Video.Add(Video);
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Video> entityEntry = _context.Video.Add(Video);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Voogle.Data;
+using Voogle.Pages.Videos.Custom;
 
-namespace Voogle.Pages.Models.Videos
+namespace Voogle.Pages.Videos.Crud
 {
     public class DeleteModel : PageModel
     {

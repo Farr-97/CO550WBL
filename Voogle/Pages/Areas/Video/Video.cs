@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Voogle.Pages.Models.Categories;
 using Voogle.Pages.Models.Requests;
 
-namespace Voogle.Pages.Models.Videos
+namespace Voogle.Pages.Videos.Custom
 {
     public class Video
     {

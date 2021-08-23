@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Voogle.Pages.Models.Videos;
 using Voogle.Pages.Models.Categories;
 using Voogle.Pages.Models.Requests;
 using Voogle.Pages.Models.Feedback;
 using Voogle.Pages.Models.Comments;
+using Voogle.Pages.Videos.Custom;
 
 namespace Voogle.Data
 {

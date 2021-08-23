@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Voogle.Pages.CustomPages
+namespace Voogle.Pages.Videos.Custom
 {
     public class VideosModel : PageModel
     {
