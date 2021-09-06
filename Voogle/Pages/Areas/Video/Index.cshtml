@@ -124,6 +124,13 @@
         border: solid 2px #ee2831;
     }
 
+    td a {
+        display: block;
+        color:black;
+    }
+
+
+
 </style>
 
 
@@ -136,52 +143,60 @@
         <div class="column1">
             <table class="table">
                 <!--<thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Video[0].Title)
-                            <br />
-                            @Html.DisplayNameFor(model => model.Video[0].UploadDate)
-                            <br />
-                            @Html.DisplayNameFor(model => model.Video[0].Publisher)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Video[0].Description)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Video[0].AvgRating)
-                            <br />
-                            @Html.DisplayNameFor(model => model.Video[0].Duration)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>-->
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Video[0].Title)
+                        <br />
+                        @Html.DisplayNameFor(model => model.Video[0].UploadDate)
+                        <br />
+                        @Html.DisplayNameFor(model => model.Video[0].Publisher)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Video[0].Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Video[0].AvgRating)
+                        <br />
+                        @Html.DisplayNameFor(model => model.Video[0].Duration)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>-->
                 <tbody>
                     @foreach (var item in Model.Video)
                     {
-                    <tr class="VideoRow">
-                        <td style="width:15%; vertical-align:middle">
-                            <div>
-                                <img src="~/video-player-svgrepo-com.png" style="width:100%; text-align:center" />
-                                <br />
-                                <div>@Html.DisplayFor(modelItem => item.Duration)</div>
-                            </div>
-                        </td>
-                        <td style="width:20%; text-align:left; vertical-align:middle">
-                            @Html.DisplayFor(modelItem => item.Title)
-                            <br />
-                            <br />
-                            Publisher: @Html.DisplayFor(modelItem => item.Publisher)
-                        </td>
-                        <td style="width:40%; vertical-align:middle; text-align:left">
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td style="width:10% ; text-align:right">
-                            <div class="stars" style="--l:@item.AvgRating"></div>
-                            <br />
-                            <br />
-                            @item.UploadDate.ToString("dd/MM/yyyy")
-                        </td>
-                    </tr>
+                        <tr class="VideoRow">
+                            <td style="width:15%; vertical-align:middle">
+                                <a asp-page=".\Pages\Player" asp-route-id="@item.VideoID">
+                                    <div>
+                                        <img src="~/video-player-svgrepo-com.png" style="width:100%; text-align:center" />
+                                        <br />
+                                        <div>@Html.DisplayFor(modelItem => item.Duration)</div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td style="width:20%; text-align:left; vertical-align:middle">
+                                <a asp-page=".\Pages\Player" asp-route-id="@item.VideoID">
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                    <br />
+                                    <br />
+                                    Publisher: @Html.DisplayFor(modelItem => item.Publisher)
+                                </a>
+                            </td>
+                            <td style="width:40%; vertical-align:middle; text-align:left">
+                                <a asp-page=".\Pages\Player" asp-route-id="@item.VideoID">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </a>
+                            </td>
+                            <td style="width:10% ; text-align:right">
+                                <a asp-page=".\Pages\Player" asp-route-id="@item.VideoID">
+                                    <div class="stars" style="--l:@item.AvgRating"></div>
+                                    <br />
+                                    <br />
+                                    @item.UploadDate.ToString("dd/MM/yyyy")
+                                </a>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>

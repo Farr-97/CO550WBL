@@ -1,6 +1,7 @@
 ﻿@page
 @model Voogle.Pages.Videos.Custom.PlayerModel
 @{
+    ViewData["Title"] = "Player";
 }
 <style type="text/css">
     body {
@@ -8,14 +9,14 @@
         width: 100%;
         height: 100%;
         color: white;
-        background-color: #9be0d0
+        background-color: #9be0d0;
+        font-family: 'Palatino Linotype', Georgia;
     }
 
     .video-details {
-        padding: 10px;
-        margin: 10px 0px 10px 0px;
+        margin: 10px 0px 15px 0px;
         background: white;
-        height: 10vh;
+        height: fit-content;
     }
 
 
@@ -23,25 +24,42 @@
         padding: 10px;
         margin: 10px 0px 10px 0px;
         background: white;
-        height: 70vh;
+        height: 100vh;
     }
-        table {
-            border-collapse: collapse;
-            background:grey;
-        }
-        table, td, th {
-            border: 1px solid white;
-            vertical-align: top;
-            padding: 2%;
-        }
-        .normal-tr {
-            height: auto;
-            font-size: 12px;
-        }
-        .header-tr {
-            height: 20px;
-            font-size: 14px;
-        }
+
+    .video-info-table {
+        background: #9be0d0;
+        color: black;
+        width: 100%;
+        border: 1px solid #9be0d0;
+    }
+
+    .video-info-table tr, td{
+        width:50%;
+        border: 0px;
+    }
+    
+
+    .comment-table {
+        border-collapse: collapse;
+        background: grey;
+    }
+
+    .comment-table, td, th {
+        border: 1px solid white;
+        vertical-align: top;
+        padding: 2%;
+    }
+
+    .normal-tr {
+        height: auto;
+        font-size: 12px;
+    }
+
+    .header-tr {
+        height: 20px;
+        font-size: 14px;
+    }
 
     .float-child-L {
         float: left;
@@ -49,6 +67,7 @@
         width: 70%;
         padding: 10px;
     }
+
     .float-child-R {
         float: left;
         height: 100%;
@@ -63,7 +82,7 @@
     .column-rv {
         float: left;
         width: 30%;
-        margin:5px;
+        margin: 5px;
         border-style: solid;
         border-color: white;
         border-width: 2px;
@@ -83,52 +102,92 @@
 </head>
 
 <body>
-       <div class="video-details">
-                
+
+
+    <div class="video-and-comments">
+        <div class="float-child-L">
+            <div style="width: 100%; padding-top: 56.25%; height: 0px; position: relative">
+                <video style="background: grey; width: 100%; height: 100%; position: absolute; top:0; left:0" controls></video>
             </div>
 
-            <div class="video-and-comments">
-                <div class="float-child-L">
-                    <div style="width: 100%; padding-top: 56.25%; height: 0px; position: relative">
-                        <video style="background: grey; width: 100%; height: 100%; position: absolute; top:0; left:0" controls></video>
-                    </div>
-
-                    <div style="margin: 20px 0px; padding:10px; height:auto; background:grey">
-                        RELATED VIDEOS
-                        <div class="row-rv">
-                            <div class="column-rv">
-                                <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
-                            </div>
-                            <div class="column-rv">
-                                <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
-                            </div>
-                            <div class="column-rv">
-                                <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="float-child-R">
-                    <table>
-                        <tr class="header-tr">
-                            <th>Time Stamp</th>
-                            <th>Comment</th>
+            <div class="video-details">
+                <table class="video-info-table">
+                    <tbody>
+                        <tr>
+                            <td class="vi-1">
+                                @Html.DisplayFor(model => model.Video.Title)
+                                <br />
+                                @Html.DisplayFor(model => model.Video.Publisher)
+                            </td>
+                            <td class="vi-1">
+                                @Html.DisplayFor(model => model.Video.UploadDate)
+                            </td>
                         </tr>
-                        <tr class="normal-tr">
-                            <th>00:00:30</th>
-                            <th>Bring 1 cup of water and the egg mixture to a boil in a medium saucepan, stirring occasionally.</th>
-                        </tr>
-                        <tr class="normal-tr">
-                            <th>00:00:59</th>
-                            <th>Flip the spoons over.</th>
-                        </tr>
-                    </table>
+                        <tr>
+                            <td colspan="2" class="vi-2">
 
-                </div>
-                
-               
+                                @Html.DisplayFor(model => model.Video.Description)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
+            <div style="margin: 20px 0px; padding:10px; height:auto; background:grey">
+                RELATED VIDEOS
+                <div class="row-rv">
+                    <div class="column-rv">
+                        <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
+                    </div>
+                    <div class="column-rv">
+                        <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
+                    </div>
+                    <div class="column-rv">
+                        <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="float-child-R">
+            <table class="comment-table">
+                <tr class="header-tr">
+                    <th>Time Stamp</th>
+                    <th>Comment</th>
+                </tr>
+                <tr class="normal-tr">
+                    <th>00:00:30</th>
+                    <th>Bring 1 cup of water and the egg mixture to a boil in a medium saucepan, stirring occasionally.</th>
+                </tr>
+                <tr class="normal-tr">
+                    <th>00:00:59</th>
+                    <th>Flip the spoons over.</th>
+                </tr>
+            </table>
+
+        </div>
+
+
+    </div>
+
+    <div>
+        <input type="text" id="txtUrl" style="width:300px">
+
+        <input type="button" id="btnPlay" value="Play" />
+        <hr />
+        <iframe id="video" width="420" height="315" frameborder="0" style="display:none" allowfullscreen></iframe>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("body").on("click", "#btnPlay", function () {
+                var url = $("#txtUrl").val();
+                url = url.split('v=')[1];
+                $("#video")[0].src = "//www.youtube.com/embed/" + url;
+                $("#video").show();
+            });
+        </script>
+    </div>
+
+
+
 </body>
-<footer></footer>

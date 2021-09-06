@@ -4,13 +4,37 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Voogle.Data;
+using Voogle.Pages.Videos.Custom;
 
 namespace Voogle.Pages.Videos.Custom
 {
     public class PlayerModel : PageModel
     {
-        public void OnGet()
+        private readonly Voogle.Data.VoogleContext _context;
+
+        public PlayerModel(Voogle.Data.VoogleContext context)
         {
+            _context = context;
+        }
+
+        public Video Video { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Video = await _context.Video.FirstOrDefaultAsync(m => m.VideoID == id);
+
+            if (Video == null)
+            {
+                return NotFound();
+            }
+            return Page();
         }
     }
 }
