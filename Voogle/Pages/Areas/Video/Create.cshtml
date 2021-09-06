@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Video.UploadDate" class="control-label"></label>
-                <input asp-for="Video.UploadDate" class="form-control" />
+                <input type="date" asp-for="Video.UploadDate" class="form-control" />
                 <span asp-validation-for="Video.UploadDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,16 +38,16 @@
                 <input asp-for="Video.Publisher" class="form-control" />
                 <span asp-validation-for="Video.Publisher" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Video.AvgRating" class="control-label"></label>
-                <input asp-for="Video.AvgRating" class="form-control" />
-                <span asp-validation-for="Video.AvgRating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Video.Duration" class="control-label"></label>
-                <input asp-for="Video.Duration" class="form-control" />
-                <span asp-validation-for="Video.Duration" class="text-danger"></span>
-            </div>
+            <!--<div class="form-group">
+        <label asp-for="Video.AvgRating" class="control-label"></label>
+        <input asp-for="Video.AvgRating" class="form-control" />
+        <span asp-validation-for="Video.AvgRating" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Video.Duration" class="control-label"></label>
+        <input asp-for="Video.Duration" class="form-control" />
+        <span asp-validation-for="Video.Duration" class="text-danger"></span>
+    </div>-->
             <div class="form-group">
                 <label asp-for="Video.Description" class="control-label"></label>
                 <input asp-for="Video.Description" class="form-control" />
