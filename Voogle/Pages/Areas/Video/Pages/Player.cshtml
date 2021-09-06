@@ -15,8 +15,7 @@
 
     .video-details {
         margin: 10px 0px 15px 0px;
-        background: white;
-        height: fit-content;
+        background: #9be0d0;
     }
 
 
@@ -94,6 +93,49 @@
         clear: both;
         display: table;
     }
+
+
+    .float-grid {
+        display: grid;
+        grid-template-columns: 70% 30%;
+        grid-auto-rows:minmax(100px, auto);
+        align-content:center;
+    }
+
+    .float-left {
+        float: left;
+        display: inherit;
+        grid-column: 1;
+    }
+
+    .float-left-top{
+        grid-row: 1;
+    }
+
+    .float-left-bottom{
+        grid-row: 2;
+    }
+
+    .float-right{
+        float:right;
+        display: inherit;
+        grid-column: 2;
+    }
+
+    .float-right-top {
+        grid-row: 1;
+    }
+
+    .float-right-bottom {
+        grid-row: 2;
+    }
+
+    .float-quarter {
+        text-align: center;
+        background: #ee2831;
+        margin: 2px;
+        border: 1px solid #9be0d0;
+    }
 </style>
 
 
@@ -102,6 +144,70 @@
 </head>
 
 <body>
+
+    
+    <div class="float-grid">
+        <div class="float-left">
+            <div class="float-left-top float-quarter">
+                VIDEO PLAYER
+                <br />
+                <input type="text" id="txtUrl" style="width:300px">
+
+                <input type="button" id="btnPlay" value="Play" />
+                <hr />
+                <iframe id="video" width="420" height="315" frameborder="0" style="display:none" allowfullscreen></iframe>
+                <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript">
+                    $("body").on("click", "#btnPlay", function () {
+                        var url = $("#txtUrl").val();
+                        url = url.split('v=')[1];
+                        $("#video")[0].src = "//www.youtube.com/embed/" + url;
+                        $("#video").show();
+                    });
+                </script>
+            </div>
+            <div class="float-left-bottom float-quarter">
+                VIDEO DETAILS
+            </div>
+        </div>
+        <div class="float-right">
+            <div class="float-right-top float-quarter">
+                COMMENTS
+            </div>
+            <div class="float-right-bottom float-quarter">
+                FEEDBACK
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--
+
+    <div class="float-top-left">
+        <input type="text" id="txtUrl" style="width:300px">
+
+        <input type="button" id="btnPlay" value="Play" />
+        <hr />
+        <iframe id="video" width="420" height="315" frameborder="0" style="display:none" allowfullscreen></iframe>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("body").on("click", "#btnPlay", function () {
+                var url = $("#txtUrl").val();
+                url = url.split('v=')[1];
+                $("#video")[0].src = "//www.youtube.com/embed/" + url;
+                $("#video").show();
+            });
+        </script>
+    </div>
+
+    <table>
+    </table>
+
+
+
+
+
 
 
     <div class="video-and-comments">
@@ -133,40 +239,26 @@
                 </table>
             </div>
 
-            <div style="margin: 20px 0px; padding:10px; height:auto; background:grey">
-                RELATED VIDEOS
-                <div class="row-rv">
-                    <div class="column-rv">
-                        <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
-                    </div>
-                    <div class="column-rv">
-                        <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
-                    </div>
-                    <div class="column-rv">
-                        <img src="https://www.vtracrobotics.com/wp-content/uploads/2018/07/video-thumbnail.jpg" alt="Snow" style="width:100%">
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-        <div class="float-child-R">
-            <table class="comment-table">
-                <tr class="header-tr">
-                    <th>Time Stamp</th>
-                    <th>Comment</th>
-                </tr>
-                <tr class="normal-tr">
-                    <th>00:00:30</th>
-                    <th>Bring 1 cup of water and the egg mixture to a boil in a medium saucepan, stirring occasionally.</th>
-                </tr>
-                <tr class="normal-tr">
-                    <th>00:00:59</th>
-                    <th>Flip the spoons over.</th>
-                </tr>
-            </table>
 
         </div>
+    </div>
+    <div class="float-child-R">
+        <table class="comment-table">
+            <tr class="header-tr">
+                <th>Time Stamp</th>
+                <th>Comment</th>
+            </tr>
+            <tr class="normal-tr">
+                <th>00:00:30</th>
+                <th>Bring 1 cup of water and the egg mixture to a boil in a medium saucepan, stirring occasionally.</th>
+            </tr>
+            <tr class="normal-tr">
+                <th>00:00:59</th>
+                <th>Flip the spoons over.</th>
+            </tr>
+        </table>
+
+    </div>
 
 
     </div>
@@ -188,6 +280,6 @@
         </script>
     </div>
 
-
+        -->
 
 </body>
