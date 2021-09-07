@@ -4,6 +4,10 @@
     ViewData["Title"] = "Player";
 }
 <style type="text/css">
+    html {
+        overflow-y: scroll;
+    }
+
     body {
         margin: 0px;
         width: 100%;
@@ -11,6 +15,7 @@
         color: white;
         background-color: #9be0d0;
         font-family: 'Palatino Linotype', Georgia;
+        position: absolute;
     }
 
     .video-details {
@@ -110,6 +115,7 @@
 
     .float-left-top{
         grid-row: 1;
+        padding:10px;
     }
 
     .float-left-bottom{
@@ -186,10 +192,10 @@
             <div class="float-left-top float-quarter">
                 VIDEO PLAYER
                 
-                <iframe id="videoPlayerBox" width="720" height="405" src="embedCode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="videoPlayerBox" width="720" height="405" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <script type="text/javascript">
-                    var videoUrl = "@Html.DisplayFor(model => model.Video.Title)";
-                    var finalSplitText = videoUrl.split("v=")[1];
+                    var videoURLcode = "@Html.DisplayFor(model => model.Video.VideoURL)";
+                    var finalSplitText = videoURLcode.split("v=")[1];
                     var videoCodeURL = "//www.youtube.com/embed/" + finalSplitText;
 
                     window.onload = function () {
@@ -198,7 +204,7 @@
                         document.getElementById("videoPlayerBox").src = videoCodeURL;
                     }
                 </script>
-            
+            @Html.DisplayFor(model => model.Video.VideoURL)
             </div>
             <div class="float-left-bottom float-quarter details">
                 <div class="details-left">
@@ -231,7 +237,29 @@
         </div>
         <div class="float-right">
             <div class="float-right-top float-quarter">
-                COMMENTS
+                <table class="comment-table">
+                    <tr class="header-tr">
+                        <th>Time Stamp</th>
+                        <th>Comment</th>
+                    </tr>
+                    <!--for EACH
+                    {
+                        <tr>
+                            <td>
+
+                            </td>
+                        </tr>
+
+                        <tr class="normal-tr">
+                            <th>00:00:30</th>
+                            <th>Bring 1 cup of water and the egg mixture to a boil in a medium saucepan, stirring occasionally.</th>
+                        </tr>
+                        <tr class="normal-tr">
+                            <th>00:00:59</th>
+                            <th>Flip the spoons over.</th>
+                        </tr>
+                    }-->
+                </table>
             </div>
             <div class="float-right-bottom float-quarter">
                 FEEDBACK
