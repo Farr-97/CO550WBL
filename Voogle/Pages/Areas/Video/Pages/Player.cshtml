@@ -192,19 +192,17 @@
             <div class="float-left-top float-quarter">
                 VIDEO PLAYER
                 
-                <iframe id="videoPlayerBox" width="720" height="405" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <script type="text/javascript">
-                    var videoURLcode = "@Html.DisplayFor(model => model.Video.VideoURL)";
-                    var finalSplitText = videoURLcode.split("v=")[1];
-                    var videoCodeURL = "//www.youtube.com/embed/" + finalSplitText;
+                <iframe id="videoPlayerBox" width="720" height="405" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+                <script type="text/javascript">
                     window.onload = function () {
-                        //when the document is finished loading, replace everything
-                        //between the <a ...> </a> tags with the value of splitText
-                        document.getElementById("videoPlayerBox").src = videoCodeURL;
+                        var videoURLcode = "@Html.DisplayFor(model => model.Video.VideoURL)";
+                        var finalSplitText = videoURLcode.split("v=")[1];
+                        var videoCodeURL = "//www.youtube.com/embed/" + finalSplitText;
+                        $('#videoPlayerBox').attr('src', videoCodeURL)
                     }
                 </script>
-            @Html.DisplayFor(model => model.Video.VideoURL)
+
             </div>
             <div class="float-left-bottom float-quarter details">
                 <div class="details-left">
@@ -216,7 +214,7 @@
                 </div>
                 <div class="details-right">
                     <a id="uploadDate"></a>
-                <script>
+               <!-- <script>
                         var dateTime = "@Html.DisplayFor(model => model.Video.UploadDate)";
                     var date = dateTime.split(" ")[0];
 
@@ -225,7 +223,7 @@
                         //between the <a ...> </a> tags with the value of splitText
                         document.getElementById("uploadDate").innerHTML = date;
                     }
-                </script>
+                </script> -->
                     <br />
                     <br />
                     <div class="stars" style="--l:@Html.DisplayFor(model => model.Video.AvgRating)"></div>
