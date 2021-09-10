@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Voogle.Pages.Models.Categories;
-using Voogle.Pages.Models.Comments;
+using Voogle.Pages.Models.Feedback;
 using Voogle.Pages.Models.Requests;
+using System.Linq;
 
 namespace Voogle.Pages.Videos.Custom
 {
@@ -26,6 +27,12 @@ namespace Voogle.Pages.Videos.Custom
         public string VideoURL { get; set; }
         public Request Request { get; set; }
         public Category Category { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+
+        public AverageClass()
+        {
+                    public IList<Feedback> Feedback { get; set; }
+        decimal total = Feedback.Sum(item => item.Rating);
+    }
+
     }
 }

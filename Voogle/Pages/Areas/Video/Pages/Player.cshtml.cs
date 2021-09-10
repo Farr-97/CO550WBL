@@ -55,7 +55,7 @@ namespace Voogle.Pages.Videos.Custom
             _context.Feedback.Add(Feedback);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Video/Index");
+            return Redirect("~/Areas/Video/Index");
 
         }
 
