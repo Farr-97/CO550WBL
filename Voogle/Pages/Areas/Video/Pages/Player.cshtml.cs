@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Voogle.Data;
+using Voogle.Pages.Models.Feedback;
 using Voogle.Pages.Videos.Custom;
 
 namespace Voogle.Pages.Videos.Custom
@@ -18,6 +19,8 @@ namespace Voogle.Pages.Videos.Custom
         {
             _context = context;
         }
+
+        public IList<Feedback> FeedbackList { get; set; }
 
         public Video Video { get; set; }
 
@@ -35,8 +38,29 @@ namespace Voogle.Pages.Videos.Custom
                 return NotFound();
             }
             return Page();
+
+        }
+
+        [BindProperty]
+        public Feedback Feedback { get; set; }
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            _context.Feedback.Add(Feedback);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Video/Index");
+
         }
 
 
     }
 }
+
+

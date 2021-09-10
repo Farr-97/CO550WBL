@@ -1,5 +1,6 @@
 ﻿@page
 @model Voogle.Pages.Videos.Custom.PlayerModel
+
 @{
     ViewData["Title"] = "Player";
 }
@@ -111,6 +112,7 @@
         float: left;
         display: inherit;
         grid-column: 1;
+        max-height:457px;
     }
 
     .float-left-top{
@@ -126,6 +128,7 @@
         float:right;
         display: inherit;
         grid-column: 2;
+        padding: 5px
     }
 
     .float-right-top {
@@ -142,6 +145,7 @@
         margin: 2px;
         border: 1px solid #9be0d0;
     }
+
     .stars {
         --s: 25px;
         width: calc(var(--n,5)*var(--s));
@@ -177,6 +181,79 @@
         grid-column: 1/4;
         grid-row: 2;
     }
+    .rating {
+        --dir: right;
+        --fill: gold;
+        --fillbg: rgba(100, 100, 100, 0.15);
+        --heart: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.328l-1.453-1.313q-2.484-2.25-3.609-3.328t-2.508-2.672-1.898-2.883-0.516-2.648q0-2.297 1.57-3.891t3.914-1.594q2.719 0 4.5 2.109 1.781-2.109 4.5-2.109 2.344 0 3.914 1.594t1.57 3.891q0 1.828-1.219 3.797t-2.648 3.422-4.664 4.359z"/></svg>');
+        --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.25l-6.188 3.75 1.641-7.031-5.438-4.734 7.172-0.609 2.813-6.609 2.813 6.609 7.172 0.609-5.438 4.734 1.641 7.031z"/></svg>');
+        --stars: 5;
+        --starsize: 3rem;
+        --symbol: var(--star);
+        --value: 1;
+        --w: calc(var(--stars) * var(--starsize));
+        --x: calc(100% * (var(--value) / var(--stars)));
+        block-size: var(--starsize);
+        inline-size: var(--w);
+        position: relative;
+        touch-action: manipulation;
+        -webkit-appearance: none;
+    }
+
+    [dir="rtl"] .rating {
+        --dir: left;
+    }
+
+    .rating::-moz-range-track {
+        background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+        block-size: 100%;
+        mask: repeat left center/var(--starsize) var(--symbol);
+    }
+
+    .rating::-webkit-slider-runnable-track {
+        background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+        block-size: 100%;
+        mask: repeat left center/var(--starsize) var(--symbol);
+        -webkit-mask: repeat left center/var(--starsize) var(--symbol);
+    }
+
+    .rating::-moz-range-thumb {
+        height: var(--starsize);
+        opacity: 0;
+        width: var(--starsize);
+    }
+
+    .rating::-webkit-slider-thumb {
+        height: var(--starsize);
+        opacity: 0;
+        width: var(--starsize);
+        -webkit-appearance: none;
+    }
+
+    .rating, .rating-label {
+        display: block;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .rating-label {
+        margin-block-end: 1rem;
+    }
+    .row3-feedback{
+        grid-row:4;
+    }
+    .stars {
+        --s: 25px;
+        width: calc(var(--n,5)*var(--s));
+        height: calc(var(--s)*0.9);
+        --v1: transparent,#000 0.5deg 108deg,#0000 109deg;
+        --v2: transparent,#000 0.5deg 36deg,#0000 37deg;
+        -webkit-mask: conic-gradient(from 54deg at calc(var(--s)*0.68) calc(var(--s)*0.57),var(--v1)), conic-gradient(from 90deg at calc(var(--s)*0.02) calc(var(--s)*0.35),var(--v2)), conic-gradient(from 126deg at calc(var(--s)*0.5) calc(var(--s)*0.7),var(--v1)), conic-gradient(from 162deg at calc(var(--s)*0.5) 0,var(--v2));
+        -webkit-mask-size: var(--s) var(--s);
+        -webkit-mask-composite: xor,destination-over;
+        mask-composite: exclude,add;
+        background: linear-gradient(gold 0 0) 0/calc(var(--l,0)*var(--s)) no-repeat #ccc;
+        display: inline-flex;
+    }
 </style>
 
 
@@ -186,12 +263,13 @@
 
 <body>
 
-    
+
+
     <div class="float-grid">
         <div class="float-left">
             <div class="float-left-top float-quarter">
                 VIDEO PLAYER
-                
+
                 <iframe id="videoPlayerBox" width="720" height="405" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                 <script type="text/javascript">
@@ -199,7 +277,14 @@
                         var videoURLcode = "@Html.DisplayFor(model => model.Video.VideoURL)";
                         var finalSplitText = videoURLcode.split("v=")[1];
                         var videoCodeURL = "//www.youtube.com/embed/" + finalSplitText;
-                        $('#videoPlayerBox').attr('src', videoCodeURL)
+                        $('#videoPlayerBox').attr('src', videoCodeURL);
+
+                        var dateTime = "@Html.DisplayFor(model => model.Video.UploadDate)";
+                        var date = dateTime.split(" ")[0];
+                        document.getElementById("uploadDate").innerHTML = date;
+
+                        var VideoKey = "@Html.DisplayFor(model => model.Video.VideoID)";
+                        document.getElementById("VidKey").value = VideoKey
                     }
                 </script>
 
@@ -210,20 +295,10 @@
                     <br />
                     <br />
                     @Html.DisplayFor(model => model.Video.Publisher)
-                    
+
                 </div>
                 <div class="details-right">
                     <a id="uploadDate"></a>
-               <!-- <script>
-                        var dateTime = "@Html.DisplayFor(model => model.Video.UploadDate)";
-                    var date = dateTime.split(" ")[0];
-
-                    window.onload = function () {
-                        //when the document is finished loading, replace everything
-                        //between the <a ...> </a> tags with the value of splitText
-                        document.getElementById("uploadDate").innerHTML = date;
-                    }
-                </script> -->
                     <br />
                     <br />
                     <div class="stars" style="--l:@Html.DisplayFor(model => model.Video.AvgRating)"></div>
@@ -232,139 +307,65 @@
                     @Html.DisplayFor(model => model.Video.Description)
                 </div>
             </div>
-        </div>
-        <div class="float-right">
-            <div class="float-right-top float-quarter">
-                <table class="comment-table">
-                    <tr class="header-tr">
-                        <th>Time Stamp</th>
-                        <th>Comment</th>
-                    </tr>
-                    <!--for EACH
-                    {
-                        <tr>
-                            <td>
+            <div class="float-quarter row3-feedback">
 
-                            </td>
-                        </tr>
+                        <table>
+                            <tbody>
+                                @if (Model.FeedbackList != null)
+                                {
+                                    foreach (var item in Model.FeedbackList)
+                                    {
+                                    <tr class="VideoRow">
+                                       
+                                        <td style="text-align:left; vertical-align:middle">
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                            <span asp-validation-for="@item.Description" class="text-danger"></span>
+                                        </td>
+                                        <td style="vertical-align:middle; text-align:left">
+                                            <div class="stars" style="--l:@item.Rating"></div>
+                                            <span asp-validation-for="@item.Rating" class="text-danger"></span>
 
-                        <tr class="normal-tr">
-                            <th>00:00:30</th>
-                            <th>Bring 1 cup of water and the egg mixture to a boil in a medium saucepan, stirring occasionally.</th>
-                        </tr>
-                        <tr class="normal-tr">
-                            <th>00:00:59</th>
-                            <th>Flip the spoons over.</th>
-                        </tr>
-                    }-->
-                </table>
-            </div>
-            <div class="float-right-bottom float-quarter">
-                FEEDBACK
+                                        </td>
+                                    </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    
+                
+                
             </div>
         </div>
-    </div>
-
-
-
-    <!--
-
-    <div class="float-top-left">
-        <input type="text" id="txtUrl" style="width:300px">
-
-        <input type="button" id="btnPlay" value="Play" />
-        <hr />
-        <iframe id="video" width="420" height="315" frameborder="0" style="display:none" allowfullscreen></iframe>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script type="text/javascript">
-            $("body").on("click", "#btnPlay", function () {
-                var url = $("#txtUrl").val();
-                url = url.split('v=')[1];
-                $("#video")[0].src = "//www.youtube.com/embed/" + url;
-                $("#video").show();
-            });
-        </script>
-    </div>
-
-    <table>
-    </table>
-
-
-
-
-
-
-
-    <div class="video-and-comments">
-        <div class="float-child-L">
-            <div style="width: 100%; padding-top: 56.25%; height: 0px; position: relative">
-                <video style="background: grey; width: 100%; height: 100%; position: absolute; top:0; left:0" controls></video>
+        <div class="float-right float-quarter">
+            <div class="float-right-top float-quarter" style="background-color: white; color: #ee2831; padding:15px ">
+                <a style="font-size:20px"><strong>Feedback Form</strong></a>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Feedback.Description" class="control-label"></label>
+                        <textarea rows="4" asp-for="Feedback.Description" class="form-control"></textarea>
+                        <span asp-validation-for="Feedback.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <label class="rating-label" asp-for="Feedback.Rating"></label>
+                        <input class="rating" max="5" oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
+                               step="0.5" style="--value:0" type="range" value="0" asp-for="Feedback.Rating">
+                        <span asp-validation-for="Feedback.Rating" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Feedback.VideoID" class="control-label"></label>
+                        <input id="VidKey" asp-for="Feedback.VideoID" class="form-control" readonly />
+                        <span asp-validation-for="Feedback.VideoID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-
-            <div class="video-details">
-                <table class="video-info-table">
-                    <tbody>
-                        <tr>
-                            <td class="vi-1">
-                                @Html.DisplayFor(model => model.Video.Title)
-                                <br />
-                                @Html.DisplayFor(model => model.Video.Publisher)
-                            </td>
-                            <td class="vi-1">
-                                @Html.DisplayFor(model => model.Video.UploadDate)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="vi-2">
-
-                                @Html.DisplayFor(model => model.Video.Description)
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
         </div>
-    </div>
-    <div class="float-child-R">
-        <table class="comment-table">
-            <tr class="header-tr">
-                <th>Time Stamp</th>
-                <th>Comment</th>
-            </tr>
-            <tr class="normal-tr">
-                <th>00:00:30</th>
-                <th>Bring 1 cup of water and the egg mixture to a boil in a medium saucepan, stirring occasionally.</th>
-            </tr>
-            <tr class="normal-tr">
-                <th>00:00:59</th>
-                <th>Flip the spoons over.</th>
-            </tr>
-        </table>
+        
 
     </div>
-
-
-    </div>
-
-    <div>
-        <input type="text" id="txtUrl" style="width:300px">
-
-        <input type="button" id="btnPlay" value="Play" />
-        <hr />
-        <iframe id="video" width="420" height="315" frameborder="0" style="display:none" allowfullscreen></iframe>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script type="text/javascript">
-            $("body").on("click", "#btnPlay", function () {
-                var url = $("#txtUrl").val();
-                url = url.split('v=')[1];
-                $("#video")[0].src = "//www.youtube.com/embed/" + url;
-                $("#video").show();
-            });
-        </script>
-    </div>
-
-        -->
 
 </body>
