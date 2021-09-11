@@ -18,6 +18,34 @@
         font-family: 'Palatino Linotype', Georgia;
         position: absolute;
     }
+    h1 {
+        color: #ee2831;
+        text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+        text-align: center;
+        font-size: 40px;
+        padding: 1%;
+        text-transform: full-width uppercase;
+        position: relative;
+        font-size: 30px;
+        z-index: 1;
+        overflow: hidden;
+        text-align: center;
+    }
+
+        h1:before, h1:after {
+            position: absolute;
+            top: 51%;
+            overflow: hidden;
+            width: 50%;
+            height: 2px;
+            content: '\a0';
+            background-color: white;
+        }
+
+        h1:before {
+            margin-left: -50%;
+            text-align: right;
+        }
 
     .video-details {
         margin: 10px 0px 15px 0px;
@@ -263,12 +291,13 @@
 
 <body>
 
-
+    <h1><strong>Video Player</strong></h1>
 
     <div class="float-grid">
         <div class="float-left">
             <div class="float-left-top float-quarter">
-                VIDEO PLAYER
+                
+                <h2 style="font-size:20px; padding: 10px"><strong>VideoID: @Html.DisplayFor(model => model.Video.VideoID)</strong></h2>
 
                 <iframe id="videoPlayerBox" width="720" height="405" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -291,8 +320,7 @@
             </div>
             <div class="float-left-bottom float-quarter details">
                 <div class="details-left">
-                    @Html.DisplayFor(model => model.Video.Title)
-                    <br />
+                    <h2 style="font-size:20px;"><strong>@Html.DisplayFor(model => model.Video.Title)</strong></h2>
                     <br />
                     @Html.DisplayFor(model => model.Video.Publisher)
 
@@ -309,31 +337,32 @@
             </div>
             <div class="float-quarter row3-feedback">
 
-                        <table>
-                            <tbody>
-                                @if (Model.FeedbackList != null)
-                                {
-                                    foreach (var item in Model.FeedbackList)
-                                    {
-                                    <tr class="VideoRow">
-                                       
-                                        <td style="text-align:left; vertical-align:middle">
-                                            @Html.DisplayFor(modelItem => item.Description)
-                                            <span asp-validation-for="@item.Description" class="text-danger"></span>
-                                        </td>
-                                        <td style="vertical-align:middle; text-align:left">
-                                            <div class="stars" style="--l:@item.Rating"></div>
-                                            <span asp-validation-for="@item.Rating" class="text-danger"></span>
+                <table>
+                    <tbody>
+                        @if (Model.FeedbackList != null)
+                        {
+                            foreach (var item in Model.FeedbackList)
+                            {
+                                <tr class="VideoRow">
 
-                                        </td>
-                                    </tr>
-                                    }
-                                }
-                            </tbody>
-                        </table>
-                    
-                
-                
+                                    <td style="text-align:left; vertical-align:middle">
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                        <span asp-validation-for="@item.Description" class="text-danger"></span>
+                                    </td>
+                                    <td style="vertical-align:middle; text-align:left">
+                                        <div class="stars" style="--l:@item.Rating"></div>
+                                        <span asp-validation-for="@item.Rating" class="text-danger"></span>
+
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+
+
             </div>
         </div>
         <div class="float-right float-quarter">
@@ -365,12 +394,12 @@
             </div>
             <div>
                 <div class="form-group">
-                    <input type="button" value="Submit" class="btn btn-primary" />
-                    <button asp-page="../Request/Index"  asp-route-id="@Html.DisplayFor(model => model.Video.VideoID)">Back to List</button>
+                    <a asp-page="/Areas/Feedback/Index" asp-route-id="@Html.DisplayFor(model => model.Video.VideoID)">To List</a>
+
                 </div>
             </div>
         </div>
-        
+
 
     </div>
 

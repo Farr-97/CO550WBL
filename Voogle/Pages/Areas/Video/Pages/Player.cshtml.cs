@@ -20,7 +20,7 @@ namespace Voogle.Pages.Videos.Custom
             _context = context;
         }
 
-        public IList<Feedback> FeedbackList { get; set; }
+        public IEnumerable<Feedback> FeedbackList { get; set; }
 
         public Video Video { get; set; }
 

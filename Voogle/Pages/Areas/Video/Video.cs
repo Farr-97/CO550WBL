@@ -28,11 +28,8 @@ namespace Voogle.Pages.Videos.Custom
         public Request Request { get; set; }
         public Category Category { get; set; }
 
-        public AverageClass()
-        {
-                    public IList<Feedback> Feedback { get; set; }
-        decimal total = Feedback.Sum(item => item.Rating);
-    }
+        public List<Feedback> Feedbacks { get; set; }
 
-    }
+
+}
 }

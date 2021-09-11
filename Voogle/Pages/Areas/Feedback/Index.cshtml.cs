@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Voogle.Data;
 
 namespace Voogle.Pages.Models.Feedback
 {
@@ -18,11 +16,14 @@ namespace Voogle.Pages.Models.Feedback
             _context = context;
         }
 
+
         public IList<Feedback> Feedback { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
+
             Feedback = await _context.Feedback.ToListAsync();
+
         }
     }
 }

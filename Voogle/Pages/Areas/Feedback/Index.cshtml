@@ -5,44 +5,109 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+        color: white;
+        background-color: #9be0d0;
+        font-family: 'Palatino Linotype', Georgia;
+        position: absolute;
+    }
+
+    h1 {
+        color: #ee2831;
+        text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+        text-align: center;
+        font-size: 40px;
+        padding: 1%;
+        text-transform: full-width uppercase;
+        position: relative;
+        font-size: 30px;
+        z-index: 1;
+        overflow: hidden;
+        text-align: center;
+    }
+
+        h1:before, h1:after {
+            position: absolute;
+            top: 51%;
+            overflow: hidden;
+            width: 50%;
+            height: 2px;
+            content: '\a0';
+            background-color: white;
+        }
+
+        h1:before {
+            margin-left: -50%;
+            text-align: right;
+        }
+    .block {
+        background-color: white;
+        margin: 10px 10px 100px 10px;
+    }
+    .stars {
+        --s: 25px;
+        width: calc(var(--n,5)*var(--s));
+        height: calc(var(--s)*0.9);
+        --v1: transparent,#000 0.5deg 108deg,#0000 109deg;
+        --v2: transparent,#000 0.5deg 36deg,#0000 37deg;
+        -webkit-mask: conic-gradient(from 54deg at calc(var(--s)*0.68) calc(var(--s)*0.57),var(--v1)), conic-gradient(from 90deg at calc(var(--s)*0.02) calc(var(--s)*0.35),var(--v2)), conic-gradient(from 126deg at calc(var(--s)*0.5) calc(var(--s)*0.7),var(--v1)), conic-gradient(from 162deg at calc(var(--s)*0.5) 0,var(--v2));
+        -webkit-mask-size: var(--s) var(--s);
+        -webkit-mask-composite: xor,destination-over;
+        mask-composite: exclude,add;
+        background: linear-gradient(gold 0 0) 0/calc(var(--l,0)*var(--s)) no-repeat #ccc;
+        display: inline-flex;
+    }
+
+</style>
+
+
+
+
+<h1><strong>Video Feedback</strong></h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Feedback[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Feedback[0].Rating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Feedback[0].VideoID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Feedback) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VideoID)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.FeedbackID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.FeedbackID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.FeedbackID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+<body>
+    <div class="block">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Feedback[0].Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Feedback[0].Rating)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Feedback[0].VideoID)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Feedback)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            <div class="stars" style="--l:@item.Rating"></div>
+                        </td>
+                        <td style=" text-align: center;">
+                            @Html.DisplayFor(modelItem => item.VideoID)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
