@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Voogle.Pages.Videos.Custom;
 
 namespace Voogle.Pages.Models.Requests
 {
@@ -10,7 +11,5 @@ namespace Voogle.Pages.Models.Requests
         public int RequestID { get; set; }
         public string Title { get; set; }
         public string Details { get; set; }
-        public int Upvotes { get; set; }
-        public int CategoryID { get; set; }
     }
 }

@@ -52,8 +52,6 @@ namespace Voogle.Migrations
 
                     b.HasKey("CommentID");
 
-                    b.HasIndex("VideoID");
-
                     b.ToTable("Comment");
                 });
 
@@ -75,6 +73,8 @@ namespace Voogle.Migrations
 
                     b.HasKey("FeedbackID");
 
+                    b.HasIndex("VideoID");
+
                     b.ToTable("Feedback");
                 });
 
@@ -84,9 +84,6 @@ namespace Voogle.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
 
                     b.Property<string>("Details")
                         .HasColumnType("nvarchar(max)");
@@ -124,9 +121,6 @@ namespace Voogle.Migrations
                     b.Property<string>("Publisher")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RequestID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -140,15 +134,13 @@ namespace Voogle.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.HasIndex("RequestID");
-
                     b.ToTable("Video");
                 });
 
-            modelBuilder.Entity("Voogle.Pages.Models.Comments.Comment", b =>
+            modelBuilder.Entity("Voogle.Pages.Models.Feedback.Feedback", b =>
                 {
                     b.HasOne("Voogle.Pages.Videos.Custom.Video", null)
-                        .WithMany("Comments")
+                        .WithMany("Feedbacks")
                         .HasForeignKey("VideoID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -156,17 +148,9 @@ namespace Voogle.Migrations
 
             modelBuilder.Entity("Voogle.Pages.Videos.Custom.Video", b =>
                 {
-                    b.HasOne("Voogle.Pages.Models.Categories.Category", "Category")
+                    b.HasOne("Voogle.Pages.Models.Categories.Category", null)
                         .WithMany("Videos")
                         .HasForeignKey("CategoryID");
-
-                    b.HasOne("Voogle.Pages.Models.Requests.Request", "Request")
-                        .WithMany()
-                        .HasForeignKey("RequestID");
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Request");
                 });
 
             modelBuilder.Entity("Voogle.Pages.Models.Categories.Category", b =>
@@ -176,7 +160,7 @@ namespace Voogle.Migrations
 
             modelBuilder.Entity("Voogle.Pages.Videos.Custom.Video", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("Feedbacks");
                 });
 #pragma warning restore 612, 618
         }
