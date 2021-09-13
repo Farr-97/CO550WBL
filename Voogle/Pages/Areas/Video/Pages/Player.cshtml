@@ -269,7 +269,7 @@
     .row3-feedback{
         grid-row:4;
     }
-    .stars {
+   /* .stars {
         --s: 25px;
         width: calc(var(--n,5)*var(--s));
         height: calc(var(--s)*0.9);
@@ -281,7 +281,7 @@
         mask-composite: exclude,add;
         background: linear-gradient(gold 0 0) 0/calc(var(--l,0)*var(--s)) no-repeat #ccc;
         display: inline-flex;
-    }
+    }*/
 </style>
 
 
@@ -327,9 +327,6 @@
                 </div>
                 <div class="details-right">
                     <a id="uploadDate"></a>
-                    <br />
-                    <br />
-                    <div class="stars" style="--l:@Html.DisplayFor(model => model.Video.AvgRating)"></div>
                 </div>
                 <div class="details-description">
                     @Html.DisplayFor(model => model.Video.Description)

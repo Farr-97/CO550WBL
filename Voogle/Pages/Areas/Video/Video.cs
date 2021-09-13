@@ -18,8 +18,6 @@ namespace Voogle.Pages.Videos.Custom
         public DateTime UploadDate { get; set; }
         [Display(Name = "Publisher Name")]
         public string Publisher { get; set; }
-        public decimal AvgRating { get; set; }
-        public TimeSpan Duration { get; set; }
         [Display(Name = "Video Description")]
         public string Description { get; set; }
         [Display(Name = "Video URL link")]
