@@ -154,8 +154,6 @@
                             <a asp-page=".\Pages\Player" asp-route-id="@item.VideoID">
                                 <div>
                                     <img src="~/video-player-svgrepo-com.png" style="width:100%; text-align:center" />
-                                    <br />
-                                    <div>Video ID : @Html.DisplayFor(modelItem => item.VideoID)</div>
                                 </div>
                             </a>
                         </td>
@@ -175,6 +173,9 @@
                         <td style="width:10% ; text-align:right">
                             <a asp-page=".\Pages\Player" asp-route-id="@item.VideoID">
                                 @item.UploadDate.ToString("dd/MM/yyyy")
+                                <br />
+                                <br />
+                                <div>Video ID : @Html.DisplayFor(modelItem => item.VideoID)</div>
                             </a>
                         </td>
                     </tr>

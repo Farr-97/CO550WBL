@@ -22,10 +22,5 @@ namespace Voogle.Pages.Videos.Custom
         public string Description { get; set; }
         [Display(Name = "Video URL link")]
         public string VideoURL { get; set; }
-
-        public int RequestID { get; set; }
-        public Request Request { get; set; }
-
-        ICollection<Feedback> Feedbacks { get; set; }
     }
 }

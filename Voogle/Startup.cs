@@ -29,6 +29,8 @@ namespace Voogle
 
             services.AddDbContext<VoogleContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("VoogleContext")));
+
+            services.AddMvc().AddRazorPagesOptions(options => options.Conventions.AddPageRoute("/Home", ""));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

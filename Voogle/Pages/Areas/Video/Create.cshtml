@@ -131,10 +131,6 @@
             <textarea asp-for="Video.Description" class="form-control input-field description-mlt" rows="4"></textarea>
             <span asp-validation-for="Video.Description" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="Video.RequestID" class="control-label"></label>
-            <select asp-for="Video.RequestID" class="form-control  input-field" asp-items="ViewBag.RequestID"></select>
-        </div>
         <div class="form-group button-div">
             <input type="submit" value="Create" class="submit-button" />
         </div>

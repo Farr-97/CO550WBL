@@ -1,10 +1,106 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<style type="text/css">
+    body {
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+        color: white;
+        background-color: #9be0d0;
+        font-family: 'Palatino Linotype', Georgia;
+        position: absolute;
+    }
+
+    h1 {
+        color: #ee2831;
+        text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+        text-align: center;
+        font-size: 40px;
+        padding: 1%;
+        text-transform: full-width uppercase;
+        position: relative;
+        font-size: 30px;
+        z-index: 1;
+        overflow: hidden;
+        text-align: center;
+    }
+
+        h1:before, h1:after {
+            position: absolute;
+            top: 51%;
+            overflow: hidden;
+            width: 50%;
+            height: 2px;
+            content: '\a0';
+            background-color: white;
+        }
+
+        h1:before {
+            margin-left: -50%;
+            text-align: right;
+        }
+
+    .home-grid {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 5px;
+        color: #ee2831;
+        text-align: center;
+    }
+
+    .home-column1 {
+        background-color: white;
+        height: 200px;
+        padding: 22%;
+        font-size: 30px;
+    }
+
+    .home-column2 {
+        background-color: white;
+        height: 200px;
+        padding: 22%;
+        font-size: 30px;
+    }
+
+    .home-column3 {
+        background-color: white;
+        height: 200px;
+        padding: 22%;
+        font-size: 30px;
+    }
+
+    div a {
+        display: block;
+        color: #ee2831;
+        overflow: hidden;
+    }
+</style>
+
+
+<head>
+    <title>VOOGLE - HOME</title>
+</head>
+
+<h1><strong>HOME</strong></h1>
+
+<body>
+
+    <div class="home-grid">
+        <div class="home-column1">
+            <a asp-page="/Areas/Video/Index"><strong>VIDEOS</strong></a>
+        </div>
+        <div class="home-column2">
+            <a asp-page="/Areas/Request/Index"><strong>REQUESTS</strong></a>
+        </div>
+        <div class="home-column3">
+            <a asp-page="/Areas/Feedback/Index"><strong>FEEDBACK</strong></a>
+        </div>
+    </div>
+
+</body>
+
+<footer></footer>

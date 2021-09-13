@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Voogle.Data;
 using Voogle.Pages.Videos.Custom;
-using Voogle.Pages.Areas.Request;
 
 namespace Voogle.Pages.Videos.Crud
 {
@@ -24,8 +23,7 @@ namespace Voogle.Pages.Videos.Crud
 
         public async Task OnGetAsync()
         {
-            Video = await _context.Video
-                .Include(v => v.Request).ToListAsync();
+            Video = await _context.Video.ToListAsync();
         }
     }
 }

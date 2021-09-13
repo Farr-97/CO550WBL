@@ -21,13 +21,13 @@ namespace Voogle.Pages.Videos.Crud
 
         public IActionResult OnGet()
         {
-            ViewData["RequestID"] = new SelectList(_context.Request, "RequestID", "RequestID");
             return Page();
         }
 
         [BindProperty]
         public Video Video { get; set; }
 
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
