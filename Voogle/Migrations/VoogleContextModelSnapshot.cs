@@ -91,9 +91,6 @@ namespace Voogle.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Upvotes")
-                        .HasColumnType("int");
-
                     b.HasKey("RequestID");
 
                     b.ToTable("Request");

@@ -61,9 +61,12 @@
     }
 
     .button-div {
-        grid-row: 4;
+        grid-row: 5;
         margin: 10px 0px 40px;
         grid-column:1/3;
+    }
+    .request-field{
+        grid-row: 4;
     }
     .submit-button {
         color: #fff !important;
@@ -101,42 +104,41 @@
 
 
 <div >
-        <form method="post" class="upload-form">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Video.VideoURL" class="control-label"></label>
-                <input asp-for="Video.VideoURL" class="form-control input-field" />
-                <span asp-validation-for="Video.VideoURL" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Video.Title" class="control-label"></label>
-                <input asp-for="Video.Title" class="form-control input-field" />
-                <span asp-validation-for="Video.Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Video.UploadDate" class="control-label"></label>
-                <input type="date" asp-for="Video.UploadDate" class="form-control input-field" />
-                <span asp-validation-for="Video.UploadDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Video.Publisher" class="control-label"></label>
-                <input asp-for="Video.Publisher" class="form-control input-field" />
-                <span asp-validation-for="Video.Publisher" class="text-danger"></span>
-            </div>
-            <!--<div class="form-group">
-        <label asp-for="Video.Duration" class="control-label"></label>
-        <input asp-for="Video.Duration" class="form-control" />
-        <span asp-validation-for="Video.Duration" class="text-danger"></span>
-    </div>-->
-            <div class="form-group description">
-                <label asp-for="Video.Description" class="control-label"></label>
-                <textarea asp-for="Video.Description" class="form-control input-field description-mlt" rows="4"></textarea>
-                <span asp-validation-for="Video.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group button-div">
-                <input type="submit" value="Create" class="submit-button" />
-            </div>
-        </form>
+    <form method="post" class="upload-form">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Video.VideoURL" class="control-label"></label>
+            <input asp-for="Video.VideoURL" class="form-control input-field" />
+            <span asp-validation-for="Video.VideoURL" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Video.Title" class="control-label"></label>
+            <input asp-for="Video.Title" class="form-control input-field" />
+            <span asp-validation-for="Video.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Video.UploadDate" class="control-label"></label>
+            <input type="date" asp-for="Video.UploadDate" class="form-control input-field" />
+            <span asp-validation-for="Video.UploadDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Video.Publisher" class="control-label"></label>
+            <input asp-for="Video.Publisher" class="form-control input-field" />
+            <span asp-validation-for="Video.Publisher" class="text-danger"></span>
+        </div>
+        <div class="form-group description">
+            <label asp-for="Video.Description" class="control-label"></label>
+            <textarea asp-for="Video.Description" class="form-control input-field description-mlt" rows="4"></textarea>
+            <span asp-validation-for="Video.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Video.RequestID" class="control-label"></label>
+            <select asp-for="Video.RequestID" class="form-control  input-field" asp-items="ViewBag.RequestID"></select>
+        </div>
+        <div class="form-group button-div">
+            <input type="submit" value="Create" class="submit-button" />
+        </div>
+    </form>
     </div>
 
 <div>

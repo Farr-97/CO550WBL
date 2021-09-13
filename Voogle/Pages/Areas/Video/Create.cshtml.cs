@@ -21,6 +21,7 @@ namespace Voogle.Pages.Videos.Crud
 
         public IActionResult OnGet()
         {
+            ViewData["RequestID"] = new SelectList(_context.Request, "RequestID", "RequestID");
             return Page();
         }
 

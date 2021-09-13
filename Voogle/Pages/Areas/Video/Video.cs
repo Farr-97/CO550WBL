@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Voogle.Pages.Models.Categories;
 using Voogle.Pages.Models.Feedback;
 using Voogle.Pages.Models.Requests;
 using System.Linq;
@@ -26,8 +25,9 @@ namespace Voogle.Pages.Videos.Custom
         [Display(Name = "Video URL link")]
         public string VideoURL { get; set; }
 
-        public List<Feedback> Feedbacks { get; set; }
+        public int RequestID { get; set; }
+        public Request Request { get; set; }
 
-
-}
+        ICollection<Feedback> Feedbacks { get; set; }
+    }
 }

@@ -2,7 +2,7 @@
 @model Voogle.Pages.Models.Requests.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Requests";
 }
 
 
@@ -75,16 +75,25 @@
     <a asp-page="Create">Create New</a>
 </p>
 
+
 <body>
     <div class="block">
+
         <table class="table">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Request[0].Title)
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
+                            @Html.DisplayNameFor(model => model.Request[0].Title)
+                        </a>
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Request[0].Details)
+                    </th>
+                    <th>
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.IdSort">
+                            @Html.DisplayNameFor(model => model.Request[0].RequestID)
+                        </a>
                     </th>
                 </tr>
             </thead>
@@ -98,6 +107,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Details)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestID)
                         </td>
                     </tr>
                 }

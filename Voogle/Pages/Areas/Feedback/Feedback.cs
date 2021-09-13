@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Voogle.Pages.Videos.Custom;
+
 
 namespace Voogle.Pages.Models.Feedback
 {
@@ -14,5 +16,7 @@ namespace Voogle.Pages.Models.Feedback
         public decimal Rating { get; set; }
 
         public int VideoID { get; set; }
+
+        public Video Video { get; set; }
     }
 }

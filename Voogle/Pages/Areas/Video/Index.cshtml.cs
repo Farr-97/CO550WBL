@@ -23,7 +23,8 @@ namespace Voogle.Pages.Videos.Crud
 
         public async Task OnGetAsync()
         {
-            Video = await _context.Video.ToListAsync();
+            Video = await _context.Video
+                .Include(v => v.Request).ToListAsync();
         }
     }
 }

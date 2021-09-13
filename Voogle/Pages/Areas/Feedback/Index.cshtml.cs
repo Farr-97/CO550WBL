@@ -19,10 +19,11 @@ namespace Voogle.Pages.Models.Feedback
 
         public IList<Feedback> Feedback { get;set; }
 
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync()
         {
 
-            Feedback = await _context.Feedback.ToListAsync();
+            Feedback = await _context.Feedback
+                                .Include(f => f.Video).ToListAsync();
 
         }
     }

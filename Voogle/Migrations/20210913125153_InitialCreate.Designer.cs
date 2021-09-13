@@ -10,8 +10,8 @@ using Voogle.Data;
 namespace Voogle.Migrations
 {
     [DbContext(typeof(VoogleContext))]
-    [Migration("20210911125948_initialCreate")]
-    partial class initialCreate
+    [Migration("20210913125153_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,9 +92,6 @@ namespace Voogle.Migrations
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Upvotes")
-                        .HasColumnType("int");
 
                     b.HasKey("RequestID");
 

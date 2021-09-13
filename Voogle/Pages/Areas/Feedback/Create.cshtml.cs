@@ -20,6 +20,7 @@ namespace Voogle.Pages.Models.Feedback
 
         public IActionResult OnGet()
         {
+            ViewData["VideoID"] = new SelectList(_context.Video, "VideoID", "VideoID");
             return Page();
         }
 
